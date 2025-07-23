@@ -14,32 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
 from django.contrib import admin
-from listings.swagger import schema_view
-
-
-schema_view = get_schema_view(
-   openapi.Info(
-      title="Travel API",
-      default_version='v1',
-      description="API docs for ALX Travel App",
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
-)
-
+from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin/', admin.site.urls),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    
 ]
-
-
-
-
